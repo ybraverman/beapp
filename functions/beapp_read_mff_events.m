@@ -15,21 +15,21 @@
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 % The Batch Electroencephalography Automated Processing Platform (BEAPP)
 % Copyright (C) 2015, 2016, 2017
-% Authors: AR Levin, AS Méndez Leal, LJ Gabard-Durnam, HM O'Leary
+% Authors: AR Levin, AS MÃ©ndez Leal, LJ Gabard-Durnam, HM O'Leary
 % 
 % This software is being distributed with the hope that it will be useful,
 % but WITHOUT ANY WARRANTY; without even implied warranty of
 % MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See GNU General
 % Public License for more details.
 % 
-% In no event shall Boston Children’s Hospital (BCH), the BCH Department of
+% In no event shall Boston Childrenâ€™s Hospital (BCH), the BCH Department of
 % Neurology, the Laboratories of Cognitive Neuroscience (LCN), or software 
 % contributors to BEAPP be liable to any party for direct, indirect, 
 % special, incidental, or consequential damages, including lost profits, 
 % arising out of the use of this software and its documentation, even if 
-% Boston Children’s Hospital,the Laboratories of Cognitive Neuroscience, 
+% Boston Childrenâ€™s Hospital,the Laboratories of Cognitive Neuroscience, 
 % and software contributors have been advised of the possibility of such 
-% damage. Software and documentation is provided “as is.” Boston Children’s 
+% damage. Software and documentation is provided â€œas is.â€ Boston Childrenâ€™s 
 % Hospital, the Laboratories of Cognitive Neuroscience, and software 
 % contributors are under no obligation to provide maintenance, support, 
 % updates, enhancements, or modifications.
@@ -148,6 +148,12 @@ if event_tracks.size() > 0
                         end
                     end
                 end
+                
+                %RL edit
+                if strcmp(char(event.getCode), grp_proc_info_in.behavioral_coding.events{1})
+                    evt_info(eventInd).behav_code = true;
+                end
+                %RL edit end
                 
                 if ~isfield(evt_info,'evt_cel_type')
                     evt_info(eventInd).evt_cel_type = nan;
