@@ -10,21 +10,21 @@
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 % The Batch Electroencephalography Automated Processing Platform (BEAPP)
 % Copyright (C) 2015, 2016, 2017
-% Authors: AR Levin, AS MÈndez Leal, LJ Gabard-Durnam, HM O'Leary
+% Authors: AR Levin, AS M√©ndez Leal, LJ Gabard-Durnam, HM O'Leary
 %
 % This software is being distributed with the hope that it will be useful,
 % but WITHOUT ANY WARRANTY; without even implied warranty of
 % MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See GNU General
 % Public License for more details.
 %
-% In no event shall Boston Childrenís Hospital (BCH), the BCH Department of
+% In no event shall Boston Children‚Äôs Hospital (BCH), the BCH Department of
 % Neurology, the Laboratories of Cognitive Neuroscience (LCN), or software
 % contributors to BEAPP be liable to any party for direct, indirect,
 % special, incidental, or consequential damages, including lost profits,
 % arising out of the use of this software and its documentation, even if
-% Boston Childrenís Hospital,the Laboratories of Cognitive Neuroscience,
+% Boston Children‚Äôs Hospital,the Laboratories of Cognitive Neuroscience,
 % and software contributors have been advised of the possibility of such
-% damage. Software and documentation is provided ìas is.î Boston Childrenís
+% damage. Software and documentation is provided ‚Äúas is.‚Äù Boston Children‚Äôs
 % Hospital, the Laboratories of Cognitive Neuroscience, and software
 % contributors are under no obligation to provide maintenance, support,
 % updates, enhancements, or modifications.
@@ -45,21 +45,29 @@ for curr_epoch = 1:length(evt_info)
     % move backwards through tags
     for curr_tag = length(evt_info{curr_epoch}): -1: 1 
         
-        % if tag has a behavioral code, save it to apply to closest evt tag
-        % of interest
+        %RL edit
         if ~isnan(evt_info{curr_epoch}(curr_tag).behav_code)
-            behav_value_current = evt_info{curr_epoch}(curr_tag).behav_code;
-            any_behav_vals = 1;
-        
-            % if tag is evt tag AND there isn't already a behavioral code,
-            % use the saved behavioral code for this tag
-        elseif ~strcmp(char(evt_info{curr_epoch}(curr_tag).type),'Non_Target')
-             evt_info{curr_epoch}(curr_tag).behav_code = behav_value_current;
-             
-             % if bad value, exclude this event
-             if behav_value_current
+            if strcmp(char(evt_info{curr_epoch}(curr_tag).behav_code),bad_val)
                 evt_info{curr_epoch}(curr_tag).type = 'Non_Target';
-             end
-        end     
+            end
+        end
+        %RL edit end
+        
+%        % if tag has a behavioral code, save it to apply to closest evt tag
+%        % of interest
+%        if ~isnan(evt_info{curr_epoch}(curr_tag).behav_code)
+%            behav_value_current = evt_info{curr_epoch}(curr_tag).behav_code;
+%            any_behav_vals = 1;
+%        
+%           % if tag is evt tag AND there isn't already a behavioral code,
+%            % use the saved behavioral code for this tag
+%        elseif ~strcmp(char(evt_info{curr_epoch}(curr_tag).type),'Non_Target')
+%             evt_info{curr_epoch}(curr_tag).behav_code = behav_value_current;
+%             
+%             % if bad value, exclude this event
+%             if behav_value_current
+%                evt_info{curr_epoch}(curr_tag).type = 'Non_Target';
+%             end
+%        end     
     end
 end
