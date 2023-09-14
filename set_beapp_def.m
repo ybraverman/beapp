@@ -277,6 +277,7 @@ grp_proc_info.segment_nth_stim_str = {''};
 grp_proc_info.beapp_event_group_stim=0;
 %% defaults for HAPPE V3 additional inputs
 %Format
+grp_proc_info.HAPPE_v3_reprocessing =0;
 grp_proc_info.chans_to_analyze = 'all';
 grp_proc_info.typeFields = {'code'}; % Add any additional type fields besides "code", separating other entries with a comma ;        
 grp_proc_info.happe_net_type = []; %NET Type %fprintf(['Acquisition layout type:\n  1 = EGI Geodesic Sensor ' ...% 'Net\n  2 = EGI HydroCel Geodesic Sensor Net\n  3 = Neuroscan Quik-Cap' ...%'\n  4 = Other'
